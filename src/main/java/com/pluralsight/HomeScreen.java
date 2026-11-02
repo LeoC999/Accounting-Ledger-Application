@@ -14,6 +14,7 @@ public class HomeScreen {
         System.out.println("Enter (D)eposit to input your deposit information: ");
         System.out.println("Enter (P)ayment (Debit) information:");
         System.out.println("Enter (L)egar to display your legar: ");
+        System.out.println("Enter (Q)uit to end program:");
         String letter = transationlog.next();
 
         if (letter.equalsIgnoreCase("D")) {
@@ -57,15 +58,20 @@ public class HomeScreen {
                     amount + "\n");
             writer.close();
             System.out.println("Payment Saved!");
+        }
 
-            else if(letter.equalsIgnoreCase("L")) {
-               Legar legar = new Legar();
+            else if (letter.equalsIgnoreCase("L")) {
+                Legar.legartime(transationlog);
+        }
+
+            else if(letter.equalsIgnoreCase("Q")) {
+                transationlog.close();
             }
 
         }
     }
 
-        }
+
 
 
 
