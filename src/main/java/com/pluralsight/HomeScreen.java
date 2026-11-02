@@ -35,6 +35,22 @@ public class HomeScreen {
 
             System.out.println("Deposit saved!");
         }
+        else if (letter.equalsIgnoreCase("P")) {
+            transationlog.nextLine();
+            System.out.print("Description: ");
+            String description = transationlog.nextLine();
+            System.out.print("Vendor: ");
+            String vendor = transationlog.nextLine();
+            System.out.print("Amount: ");
+            double amount = Double.parseDouble(transationlog.nextLine());
+            amount = -amount;
+            FileWriter writer = new FileWriter("transactions.csv", true);
+            writer.write(description + "|" +
+                    vendor + "|" +
+                    amount + "\n");
+            writer.close();
+            System.out.println("Deposit saved!");
+        }
     }
 
         }
