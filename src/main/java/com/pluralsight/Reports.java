@@ -9,6 +9,7 @@ import java.util.Scanner;
 public class Reports {
     public static void reportactions(Scanner transationlog) throws IOException {
         System.out.println("Welcome to the reports here are the options.");
+        System.out.println("Please enter your name: ");
 
 
     }
