@@ -2,7 +2,10 @@ package com.pluralsight;
 
 import java.io.FileWriter;
 import java.io.IOException;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.Scanner;
+
 
 public class HomeScreen {
     public static void homescreen(Scanner transationlog) throws IOException {
@@ -24,10 +27,12 @@ public class HomeScreen {
 
             System.out.print("Amount: ");
             double amount = Double.parseDouble(transationlog.nextLine());
+            LocalDate date = LocalDate.now();
+            LocalDateTime time = LocalDateTime.now();
 
             FileWriter writer = new FileWriter("transactions.csv", true);
 
-            writer.write(description + "|" +
+            writer.write (date + "|" + time + "|" + description + "|" +
                     vendor + "|" +
                     amount + "\n");
 
@@ -44,12 +49,19 @@ public class HomeScreen {
             System.out.print("Amount: ");
             double amount = Double.parseDouble(transationlog.nextLine());
             amount = -amount;
+            LocalDate date = LocalDate.now();
+            LocalDateTime time = LocalDateTime.now();
             FileWriter writer = new FileWriter("transactions.csv", true);
-            writer.write(description + "|" +
+            writer.write(date + "|" + time + "|" + description + "|" +
                     vendor + "|" +
                     amount + "\n");
             writer.close();
-            System.out.println("Deposit saved!");
+            System.out.println("Payment Saved!");
+
+            else if(letter.equalsIgnoreCase("L")) {
+               Legar legar = new Legar();
+            }
+
         }
     }
 
