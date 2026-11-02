@@ -4,6 +4,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.util.Scanner;
 
 
@@ -29,7 +30,7 @@ public class HomeScreen {
             System.out.print("Amount: ");
             double amount = Double.parseDouble(transationlog.nextLine());
             LocalDate date = LocalDate.now();
-            LocalDateTime time = LocalDateTime.now();
+            LocalTime time = LocalDateTime.now().toLocalTime();
 
             FileWriter writer = new FileWriter("transactions.csv", true);
 
@@ -50,8 +51,11 @@ public class HomeScreen {
             System.out.print("Amount: ");
             double amount = Double.parseDouble(transationlog.nextLine());
             amount = -amount;
+
             LocalDate date = LocalDate.now();
-            LocalDateTime time = LocalDateTime.now();
+            LocalTime time = LocalDateTime.now().toLocalTime();
+
+
             FileWriter writer = new FileWriter("transactions.csv", true);
             writer.write(date + "|" + time + "|" + description + "|" +
                     vendor + "|" +
