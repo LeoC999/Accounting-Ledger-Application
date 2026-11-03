@@ -4,12 +4,11 @@ import java.time.Month;
 import java.util.Scanner;
 import java.io.*;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.util.Scanner;
+
 
 public class Reports {
     public static void reportactions(Scanner transationlog) throws IOException {
-        System.out.println("Welcome to the reports here are the options.");
+        System.out.println("\nWelcome to the reports here are the options\n");
         System.out.println("Enter (1) for a month to date records ");
         System.out.println("Enter (2) for a previous month records ");
         System.out.println("Enter (3) for a year records ");
@@ -31,6 +30,9 @@ public class Reports {
         else if (letter.equalsIgnoreCase("4")) {
             previousYear();
         }
+        else if (letter.equalsIgnoreCase("5")) {
+            HomeScreen.homescreen(transationlog);
+        }
     }
 
     public static void currentMonth() throws FileNotFoundException {
@@ -51,6 +53,7 @@ public class Reports {
 
     public static void previousMonth() throws FileNotFoundException {
         LocalDate previousmonth = LocalDate.now().minusMonths(1);
+        boolean found = false;
 
         Scanner filescanner = new Scanner(new File("transactions.csv"));
 
@@ -61,9 +64,11 @@ public class Reports {
 
             if (localDateMonth.getMonth() == previousmonth.getMonth() && localDateMonth.getYear() == previousmonth.getYear()) {
                 System.out.println(line);
+                found = true;
             }
-        }
+            if(!found){ System.out.println("No recoders of previous month found") ;       }
 
+        }
     }
 
     public static void currentYear() throws FileNotFoundException {
@@ -97,15 +102,6 @@ public static void previousYear() throws FileNotFoundException {
             }
         }
     }
-}
-
-
-
-
-
-
-
-
 }
 
 

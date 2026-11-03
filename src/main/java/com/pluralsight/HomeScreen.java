@@ -10,70 +10,74 @@ import java.util.Scanner;
 
 public class HomeScreen {
     public static void homescreen(Scanner transationlog) throws IOException {
-        System.out.println("Welcome to the Accounting Ledger App");
-        System.out.println("To get us started select from a few options");
-        System.out.println("Enter (D)eposit to input your deposit information: ");
-        System.out.println("Enter (P)ayment (Debit) information:");
-        System.out.println("Enter (L)egar to display your legar: ");
-        System.out.println("Enter (Q)uit to end program:");
-        String letter = transationlog.next();
 
-        if (letter.equalsIgnoreCase("D")) {
-            transationlog.nextLine(); // clears leftover newline
+        boolean running = true;
+        while (running) {
 
-            System.out.print("Description: ");
-            String description = transationlog.nextLine();
+            System.out.println("\nWelcome to the Accounting Ledger App\n");
+            System.out.println("To get us started select from a few options");
+            System.out.println("Enter (D)eposit to input your deposit information ");
+            System.out.println("Enter (P)ayment (Debit) information");
+            System.out.println("Enter (L)egar to display your legar ");
+            System.out.println("Enter (Q)uit to end program");
+            System.out.println("\nEnter Letter Here: ");
+            String letter = transationlog.next();
 
-            System.out.print("Vendor: ");
-            String vendor = transationlog.nextLine();
+            if (letter.equalsIgnoreCase("D")) {
+                transationlog.nextLine(); // clears leftover newline
 
-            System.out.print("Amount: ");
-            double amount = Double.parseDouble(transationlog.nextLine());
-            LocalDate date = LocalDate.now();
-            LocalTime time = LocalDateTime.now().toLocalTime();
+                System.out.print("Description: ");
+                String description = transationlog.nextLine();
 
-            FileWriter writer = new FileWriter("transactions.csv", true);
+                System.out.print("Vendor: ");
+                String vendor = transationlog.nextLine();
 
-            writer.write (date + "|" + time + "|" + description + "|" +
-                    vendor + "|" +
-                    amount + "\n");
+                System.out.print("Amount: ");
+                double amount = Double.parseDouble(transationlog.nextLine());
+                LocalDate date = LocalDate.now();
+                LocalTime time = LocalDateTime.now().toLocalTime();
 
-            writer.close();
+                FileWriter writer = new FileWriter("transactions.csv", true);
 
-            System.out.println("Deposit saved!");
-        }
-        else if (letter.equalsIgnoreCase("P")) {
-            transationlog.nextLine();
-            System.out.print("Description: ");
-            String description = transationlog.nextLine();
-            System.out.print("Vendor: ");
-            String vendor = transationlog.nextLine();
-            System.out.print("Amount: ");
-            double amount = Double.parseDouble(transationlog.nextLine());
-            amount = -amount;
+                writer.write(date + "|" + time + "|" + description + "|" +
+                        vendor + "|" +
+                        amount + "\n");
 
-            LocalDate date = LocalDate.now();
-            LocalTime time = LocalDateTime.now().toLocalTime();
+                writer.close();
+
+                System.out.println("Deposit saved!");
+            } else if (letter.equalsIgnoreCase("P")) {
+                transationlog.nextLine();
+                System.out.print("Description: ");
+                String description = transationlog.nextLine();
+                System.out.print("Vendor: ");
+                String vendor = transationlog.nextLine();
+                System.out.print("Amount: ");
+                double amount = Double.parseDouble(transationlog.nextLine());
+                amount = -amount;
+
+                LocalDate date = LocalDate.now();
+                LocalTime time = LocalDateTime.now().toLocalTime();
 
 
-            FileWriter writer = new FileWriter("transactions.csv", true);
-            writer.write(date + "|" + time + "|" + description + "|" +
-                    vendor + "|" +
-                    amount + "\n");
-            writer.close();
-            System.out.println("Payment Saved!");
-        }
-
-            else if (letter.equalsIgnoreCase("L")) {
+                FileWriter writer = new FileWriter("transactions.csv", true);
+                writer.write(date + "|" + time + "|" + description + "|" +
+                        vendor + "|" +
+                        amount + "\n");
+                writer.close();
+                System.out.println("Payment Saved!");
+            } else if (letter.equalsIgnoreCase("L")) {
                 Legar.legartime(transationlog);
-        }
+            } else if (letter.equalsIgnoreCase("Q")) {
+                running = false;
 
-            else if(letter.equalsIgnoreCase("Q")) {
-                transationlog.close();
             }
 
         }
+        transationlog.close();
     }
+
+}
 
 
 
