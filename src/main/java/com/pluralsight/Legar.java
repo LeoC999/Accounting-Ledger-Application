@@ -31,12 +31,17 @@ public class Legar {
 
                 }
                 legarreader.close();
+
             } else if (legarletter.equalsIgnoreCase("D")) {
                 Scanner legarreader = new Scanner(new File("transactions.csv"));
                 legarreader.nextLine();
                 while (legarreader.hasNextLine()) {
                     String legar = legarreader.nextLine();
-                    System.out.println(legar);
+                    String[] legarstring = legar.split("\\|");
+                   double amount = Double.parseDouble(legarstring[4]);
+                   if (amount > 0){
+                       System.out.println(String.join("|", legarstring));
+                   }
                 }
                 legarreader.close();
 
@@ -45,9 +50,14 @@ public class Legar {
                 legarreader.nextLine();
                 while (legarreader.hasNextLine()) {
                     String legar = legarreader.nextLine();
-                    System.out.println(legar);
+                    String[]  legarstring = legar.split("\\|");
+                    double amount = Double.parseDouble(legarstring[4]);
+                    if (amount < 0){
+                        System.out.println(String.join("|", legarstring));
+                    }
                 }
                 legarreader.close();
+
             } else if (legarletter.equalsIgnoreCase("R")) {
                 Reports.reportactions(transationlog);
 
