@@ -1,6 +1,5 @@
 package com.pluralsight;
 
-import java.time.Month;
 import java.util.Scanner;
 import java.io.*;
 import java.time.LocalDate;
@@ -8,7 +7,8 @@ import java.time.LocalDate;
 
 public class Reports {
     public static void reportactions(Scanner transationlog) throws IOException {
-        boolean reporting = true;
+        boolean reported = true;
+        while (reported) {
 
             System.out.println("\nWelcome to the reports here are the options\n");
             System.out.println("Enter (1) for a month to date records ");
@@ -32,9 +32,11 @@ public class Reports {
             } else if (letter.equalsIgnoreCase("5")) {
                 vendorInfo(transationlog);
             } else if (letter.equalsIgnoreCase("0")) {
-                Legar.legartime(transationlog);
+             reported = false;
+
             }
         }
+    }
 
         public static void currentMonth () throws FileNotFoundException {
             LocalDate thismonth = LocalDate.now();
@@ -50,6 +52,7 @@ public class Reports {
                     System.out.println(line);
                 }
             }
+            filescanner.close();
         }
 
         public static void previousMonth () throws FileNotFoundException {
@@ -67,12 +70,16 @@ public class Reports {
                     System.out.println(line);
                     found = true;
                 }
-                if (!found) {
-                    System.out.println("No recoders of previous month found");
-                }
+
 
             }
+
+            if (!found) {
+                System.out.println("No recoders of previous month found");
+            }
+            filescanner.close();
         }
+
 
         public static void currentYear () throws FileNotFoundException {
             int currentYear = LocalDate.now().getYear();
@@ -85,6 +92,7 @@ public class Reports {
                     System.out.println(line);
                 }
             }
+            filescanner.close();
         }
         public static void previousYear () throws FileNotFoundException {
 
@@ -104,6 +112,7 @@ public class Reports {
                     System.out.println(line);
                 }
             }
+            fileScanner.close();
         }
         public static void vendorInfo (Scanner transationlog) throws FileNotFoundException {
 
@@ -128,8 +137,10 @@ public class Reports {
             }
             filescanner.close();
         }
+    }
 
-}
+
+
 
 
 
