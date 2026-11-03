@@ -31,7 +31,10 @@ public class Reports {
             previousYear();
         }
         else if (letter.equalsIgnoreCase("5")) {
-            HomeScreen.homescreen(transationlog);
+          vendorInfo(transationlog);
+        }
+        else if (letter.equalsIgnoreCase("0")) {
+        Legar.legartime(transationlog);
         }
     }
 
@@ -101,6 +104,25 @@ public static void previousYear() throws FileNotFoundException {
                 System.out.println(line);
             }
         }
+    }
+    public static void vendorInfo(Scanner transationlog) throws FileNotFoundException {
+
+        transationlog.nextLine();
+        System.out.println("Enter Vendor Name: ");
+        String vendorname = transationlog.nextLine();
+
+        Scanner filescanner = new Scanner(new File("transactions.csv"));
+        while (filescanner.hasNextLine()) {
+            String line = filescanner.nextLine();
+            String[] choice = line.split("\\|");
+
+            if (choice[3].equalsIgnoreCase(vendorname)) {
+                System.out.println(line);
+            }
+
+
+        }
+        filescanner.close();
     }
 }
 

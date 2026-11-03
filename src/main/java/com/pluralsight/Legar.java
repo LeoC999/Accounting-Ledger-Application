@@ -5,53 +5,59 @@ import java.util.Scanner;
 
 public class Legar {
     public static void legartime(Scanner transationlog) throws IOException {
-        System.out.println("\nWelcome to your Legar\n.");
-        System.out.println("To start select some more options");
-        System.out.println("Enter (A)ll to see all of your interactions ");
-        System.out.println("Enter (D)eposit's to see only your deposits ");
-        System.out.println("Enter (P)ayments to see only what you've spent ");
-        System.out.println("Enter (R)eports to see custom searches ");
-        System.out.println("\nEnter Letter Here:");
+        boolean legartimerun = true;
+        while (legartimerun) {
 
-        String legarletter =  transationlog.next();
 
-        if (legarletter.equalsIgnoreCase("A")) {
-            Scanner legarreader =new Scanner( new File("transactions.csv"));
-            legarreader.nextLine();
+            System.out.println("\nWelcome to your Legar\n.");
+            System.out.println("To start select some more options");
+            System.out.println("Enter (A)ll to see all of your interactions ");
+            System.out.println("Enter (D)eposit's to see only your deposits ");
+            System.out.println("Enter (P)ayments to see only what you've spent ");
+            System.out.println("Enter (R)eports to see custom searches ");
+            System.out.println("Enter (B)ack to go back to menu");
+            System.out.println("\nEnter Letter Here:");
 
-            while(legarreader.hasNextLine()) {
-                String legar = legarreader.nextLine();
-                System.out.println(legar);
+
+            String legarletter = transationlog.next();
+
+            if (legarletter.equalsIgnoreCase("A")) {
+                Scanner legarreader = new Scanner(new File("transactions.csv"));
+                legarreader.nextLine();
+
+                while (legarreader.hasNextLine()) {
+                    String legar = legarreader.nextLine();
+                    System.out.println(legar);
+
+                }
+                legarreader.close();
+            } else if (legarletter.equalsIgnoreCase("D")) {
+                Scanner legarreader = new Scanner(new File("transactions.csv"));
+                legarreader.nextLine();
+                while (legarreader.hasNextLine()) {
+                    String legar = legarreader.nextLine();
+                    System.out.println(legar);
+                }
+                legarreader.close();
+
+            } else if (legarletter.equalsIgnoreCase("P")) {
+                Scanner legarreader = new Scanner(new File("transactions.csv"));
+                legarreader.nextLine();
+                while (legarreader.hasNextLine()) {
+                    String legar = legarreader.nextLine();
+                    System.out.println(legar);
+                }
+                legarreader.close();
+            } else if (legarletter.equalsIgnoreCase("R")) {
+                Reports.reportactions(transationlog);
+
 
             }
-            legarreader.close();
-        }
-        else if (legarletter.equalsIgnoreCase("D")) {
-            Scanner legarreader =new Scanner( new File("transactions.csv"));
-            legarreader.nextLine();
-            while(legarreader.hasNextLine()) {
-                String legar = legarreader.nextLine();
-                System.out.println(legar);
+            else if (legarletter.equalsIgnoreCase("B")) {
+                legartimerun = false;
             }
-            legarreader.close();
 
         }
-
-        else if (legarletter.equalsIgnoreCase("P")) {
-            Scanner legarreader =new Scanner( new File("transactions.csv"));
-            legarreader.nextLine();
-            while(legarreader.hasNextLine()) {
-                String legar = legarreader.nextLine();
-                System.out.println(legar);
-            }
-            legarreader.close();
-        }
-        else if (legarletter.equalsIgnoreCase("R")) {
-      Reports.reportactions(transationlog);
-
-
-        }
-
     }
 
 }
