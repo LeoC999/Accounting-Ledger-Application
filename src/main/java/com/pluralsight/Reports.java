@@ -44,12 +44,22 @@ public class Reports {
             Scanner filescanner = new Scanner(new File("transactions.csv"));
 
             while (filescanner.hasNextLine()) {
-                String line = filescanner.nextLine();
+                String line = filescanner.nextLine().trim();
+
+                if(line.trim().isEmpty()){continue;}
+
+
                 String[] choice1 = line.split("\\|");
+
+                if (choice1.length < 5) {
+                    continue;
+                }
+
                 LocalDate localDateMonth = LocalDate.parse(choice1[0]);
 
                 if (localDateMonth.isAfter(dayofthismonth.minusDays(1)) && localDateMonth.isBefore(thismonth.plusDays(1))) {
                     System.out.println(line);
+
                 }
             }
             filescanner.close();
@@ -62,8 +72,15 @@ public class Reports {
             Scanner filescanner = new Scanner(new File("transactions.csv"));
 
             while (filescanner.hasNextLine()) {
+
                 String line = filescanner.nextLine();
+                if(line.trim().isEmpty()){continue;}
+
                 String[] choice2 = line.split("\\|");
+
+                if (choice2.length < 5) {
+                    continue;}
+
                 LocalDate localDateMonth = LocalDate.parse(choice2[0]);
 
                 if (localDateMonth.getMonth() == previousmonth.getMonth() && localDateMonth.getYear() == previousmonth.getYear()) {
@@ -82,12 +99,23 @@ public class Reports {
 
 
         public static void currentYear () throws FileNotFoundException {
-            int currentYear = LocalDate.now().getYear();
-            Scanner filescanner = new Scanner(new File("transactions.csv"));
-            while (filescanner.hasNextLine()) {
+        int currentYear = LocalDate.now().getYear();
+
+        Scanner filescanner = new Scanner(new File("transactions.csv"));
+
+        while (filescanner.hasNextLine()) {
                 String line = filescanner.nextLine();
+
+                if(line.trim().isEmpty()){continue;}
+
                 String[] choice = line.split("\\|");
+
+                if (choice.length < 5) {
+                    continue;
+                }
+
                 LocalDate localDateYear = LocalDate.parse(choice[0]);
+
                 if (localDateYear.getYear() == currentYear) {
                     System.out.println(line);
                 }
@@ -103,7 +131,13 @@ public class Reports {
             while (fileScanner.hasNextLine()) {
 
                 String line = fileScanner.nextLine();
+                if(line.trim().isEmpty()){continue;}
+
                 String[] choice1 = line.split("\\|");
+
+                if (choice1.length < 5) {
+                    continue;
+                }
 
                 LocalDate transactionDate = LocalDate.parse(choice1[0]);
 
@@ -122,9 +156,18 @@ public class Reports {
 
             Scanner filescanner = new Scanner(new File("transactions.csv"));
             boolean vendorfound = false;
+
             while (filescanner.hasNextLine()) {
+
                 String line = filescanner.nextLine();
+
+                if(line.trim().isEmpty()){continue;}
+
                 String[] choice = line.split("\\|");
+
+                if (choice.length < 5) {
+                    continue;
+                }
 
                 if (choice[3].equalsIgnoreCase(vendorname)) {
                     System.out.println(line);

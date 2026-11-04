@@ -9,9 +9,5 @@ public class Accounting {
     public static void main(String[] args) throws IOException {
         Scanner transationlog = new Scanner(System.in);
        HomeScreen.homescreen(transationlog);
-
-
-
-
     }
 }
