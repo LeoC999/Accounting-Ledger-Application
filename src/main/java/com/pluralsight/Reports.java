@@ -33,6 +33,7 @@ public class Reports {
                 vendorInfo(transationlog);
             } else if (letter.equalsIgnoreCase("0")) {
              reported = false;
+             System.out.println("Welcome back to Legar!\n ");
 
             }
         }

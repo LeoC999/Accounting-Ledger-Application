@@ -85,6 +85,7 @@ public class Legar {
             }
             else if (legarletter.equalsIgnoreCase("B")) {
                 legartimerun = false;
+                System.out.println("Welcome back to Home Screen!\n ");
             }
 
         }

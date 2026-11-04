@@ -80,6 +80,7 @@ public class HomeScreen {
                 Legar.legartime(transationlog);
             } else if (letter.equalsIgnoreCase("Q")) {
                 running = false;
+                System.out.println("Thank you for using our Accounting Ledger App");
 
             }
 
