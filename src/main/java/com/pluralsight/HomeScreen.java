@@ -45,7 +45,7 @@ public class HomeScreen {
 
                 writer.close();
 
-                System.out.println("Deposit saved!");
+                System.out.println("Deposit Saved!");
             } else if (letter.equalsIgnoreCase("P")) {
 
                 transationlog.nextLine();
@@ -76,11 +76,13 @@ public class HomeScreen {
                 writer.close();
 
                 System.out.println("Payment Saved!");
+
             } else if (letter.equalsIgnoreCase("L")) {
                 Legar.legartime(transationlog);
+
             } else if (letter.equalsIgnoreCase("Q")) {
                 running = false;
-                System.out.println("Thank you for using our Accounting Ledger App");
+                System.out.println("Thank you for using our Accounting Ledger App\n");
 
             }
 
