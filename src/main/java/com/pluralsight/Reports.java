@@ -126,6 +126,8 @@ public class Reports {
 
             int previousYear = LocalDate.now().minusYears(1).getYear();
 
+            boolean previousYearFound = false;
+
             Scanner fileScanner = new Scanner(new File("transactions.csv"));
 
             while (fileScanner.hasNextLine()) {
@@ -145,7 +147,12 @@ public class Reports {
 
                     System.out.println(line);
                 }
+
             }
+            if (!previousYearFound) {
+                System.out.println("No recoders of previous year found");
+            }
+
             fileScanner.close();
         }
         public static void vendorInfo (Scanner transationlog) throws FileNotFoundException {

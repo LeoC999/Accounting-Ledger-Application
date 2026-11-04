@@ -47,12 +47,19 @@ public class HomeScreen {
 
                 System.out.println("Deposit saved!");
             } else if (letter.equalsIgnoreCase("P")) {
+
                 transationlog.nextLine();
+
                 System.out.print("Description: ");
+
                 String description = transationlog.nextLine();
+
                 System.out.print("Vendor: ");
+
                 String vendor = transationlog.nextLine();
+
                 System.out.print("Amount: ");
+
                 double amount = Double.parseDouble(transationlog.nextLine());
                 amount = -amount;
 
@@ -61,10 +68,13 @@ public class HomeScreen {
 
 
                 FileWriter writer = new FileWriter("transactions.csv", true);
+
                 writer.write(date + "|" + time + "|" + description + "|" +
                         vendor + "|" +
                         amount + "\n");
+
                 writer.close();
+
                 System.out.println("Payment Saved!");
             } else if (letter.equalsIgnoreCase("L")) {
                 Legar.legartime(transationlog);
